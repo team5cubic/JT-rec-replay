@@ -1,5 +1,21 @@
 const fs = require('fs');
 
+function stringifyCircular(obj) {
+  var cache = [];
+  let str = JSON.stringify(obj, (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      // Duplicate reference found, discard key
+      if (cache.includes(value)) return;
+      // Store value in our collection 
+      cache.push(value);
+    }
+    return value;
+  });
+  cache = null; // Enable garbage collection
+
+  return str;
+}
+
 function writeFromObj(data, directory) {
   //store req with response by stringify request & response data (while handling the circular references that JSON.stringify doesnt like)
 
@@ -22,4 +38,4 @@ function writeFromObj(data, directory) {
   });
 }
 
-module.exports = writeFromObj
+module.exports = { writeFromObj, stringifyCircular };

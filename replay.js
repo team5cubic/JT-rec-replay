@@ -1,6 +1,10 @@
+equire('dotenv').config()
 const fs = require('fs');
 const axios = require('axios')
 const writeFromObj = require("./writeFromObj");
+const { Client } = require('pg')
+const client = new Client()
+client.connect()
 
 const DEST_URL = "http://localhost:3020"
 
