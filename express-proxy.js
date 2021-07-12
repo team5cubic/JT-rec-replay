@@ -1,6 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-const fs = require('fs');
 const writeFromObj = require("./writeFromObj");
 
 const PORT = 3000;
@@ -13,6 +12,7 @@ app.use('/', function (req, res) {
     method: req.method,
     url: `http://${req.hostname}:${DEST_PORT}${req.path}`,
     headers: req.headers,
+    //is req.body "undefined" by default?
     body: req.body,
     validateStatus: function (status) {
       return status < 500; // Always resolve for status codes less than 500
@@ -29,6 +29,7 @@ app.use('/', function (req, res) {
 
       writeFromObj({ request: simplifiedRequest, response: simplifiedResponse }, "./records");
 
+      //need to include more in response?
       res.status(response.status)
       res.set(response.headers)
       res.send(response.data)

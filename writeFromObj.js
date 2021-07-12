@@ -15,6 +15,7 @@ function writeFromObj(data, directory) {
   });
   cache = null; // Enable garbage collection
 
+  //title could be a timestamp
   //Store stringified request & response data as a file
   fs.writeFile(`${directory}/${Math.floor(Math.random() * 10000)}.json`, stringifiedData, function (err) {
     if (err) return console.log(err);

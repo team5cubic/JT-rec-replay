@@ -4,6 +4,7 @@ const writeFromObj = require("./writeFromObj");
 
 const DEST_URL = "http://localhost:3020"
 
+//replace this with a database query
 fs.readdir('records', { withFileTypes: true }, (err, files) => {
   if (err) {
     return console.log(err);
@@ -17,6 +18,7 @@ fs.readdir('records', { withFileTypes: true }, (err, files) => {
 
       record = JSON.parse(contents);
 
+      //wrap in a function to compare time of request sent and time of response received?
       axios({
         method: record.request.method,
         url: DEST_URL,
