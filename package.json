@@ -4,7 +4,8 @@
   "description": "",
   "main": "express-proxy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "initdb": "node tools/initdb.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "postgres": "^1.0.2"
   }
 }
